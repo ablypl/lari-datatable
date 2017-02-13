@@ -28,7 +28,7 @@
         </div>
         <div class="panel-body">
             <div class="table">
-                <table>
+                <table class="table is-striped">
                     <thead>
                         <th v-for="column in headers">{{ column }}</th>
                     </thead>

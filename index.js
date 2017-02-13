@@ -1,6 +1,7 @@
 import LariDataTable from './components/DataTable.vue';
 
-export default {
+const components  = {
     LariDataTable
 };
 
+export default components;
