@@ -4,7 +4,7 @@
   "description": "Data Table",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/ablypl/lari-datatable/issues"
   },
-  "homepage": "https://github.com/ablypl/lari-datatable#readme"
+  "homepage": "https://github.com/ablypl/lari-datatable#readme",
   "devDependencies": {
     "axios": "^0.15.2",
     "vue": "^2.0.1"
