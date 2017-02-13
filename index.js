@@ -1,3 +1,6 @@
-/**
- * Created by ably on 11.02.2017.
- */
+import LariDataTable from './components/DataTable.vue';
+
+export default {
+    LariDataTable
+};
+

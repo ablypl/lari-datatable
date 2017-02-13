@@ -7,7 +7,7 @@
             <div class="panel-filters">
 
                 <div class="select l-select">
-                    <select  name=""  v-model="parameters.column">
+                    <select name="" v-model="parameters.column">
                         <option value=""></option>
                         <option v-for="column in columns" :value="column">{{ column }}</option>
                     </select>
@@ -20,19 +20,22 @@
                 </div>
 
                 <input type="text" class="input" v-model="parameters.query" @keydown.enter="fetch">
-                <input type="text" class="input" v-model="parameters.second_query" v-if="parameters.operator == 'between'" @keydown.enter="fetch">
+                <input type="text" class="input" v-model="parameters.second_query"
+                       v-if="parameters.operator == 'between'" @keydown.enter="fetch">
                 <button class="button is-default" @click.prevent="fetch">Filtruj</button>
             </div>
             <span class="licon-edit"></span>
         </div>
         <div class="panel-body">
             <div class="table">
-                <thead>
-                <th v-for="column in columns">{{ column }}</th>
-                </thead>
-                <tbody>
-                <slot v-for="item in response.data" :item="item"></slot>
-                </tbody>
+                <table>
+                    <thead>
+                        <th v-for="column in headers">{{ column }}</th>
+                    </thead>
+                    <tbody>
+                        <slot v-for="item in response.data" :item="item"></slot>
+                    </tbody>
+                </table>
             </div>
 
         </div>
@@ -118,6 +121,13 @@
             _url(){
                 const _p = this.parameters;
                 return `${this.url}?order=${_p.orderBy},${_p.order}&take=${_p.take}&page=${_p.page}&query=${_p.query}&query_props=${_p.column},${_p.operator},${_p.second_query}`;
+            },
+            headers(){
+                if(!this.thead){
+                    return this.columns;
+                }
+                
+                return this.thead;
             }
         },
 
@@ -129,14 +139,14 @@
                 })
             },
             nextPage(){
-                if(this.parameters.page == this.response.last_page){
+                if (this.parameters.page == this.response.last_page) {
                     return;
                 }
                 this.parameters.page = this.parameters.page + 1;
                 this.fetch();
             },
             previousPage(){
-                if(this.parameters.page == 1){
+                if (this.parameters.page == 1) {
                     return;
                 }
                 this.parameters.page = this.parameters.page - 1;
@@ -146,7 +156,6 @@
         // executes when component is created
         beforeMount(){
             this.fetch();
-            if(!this.thead) this.thead = this.columns
         }
     }
 </script>
