@@ -6,7 +6,7 @@
             </div>
             <div class="panel-filters">
 
-                <div class="select l-select">
+                <div class="select">
                     <select name="" v-model="parameters.column">
                         <option value=""></option>
                         <option v-for="column in columns" :value="column">{{ column }}</option>
@@ -22,9 +22,10 @@
                 <input type="text" class="input" v-model="parameters.query" @keydown.enter="fetch">
                 <input type="text" class="input" v-model="parameters.second_query"
                        v-if="parameters.operator == 'between'" @keydown.enter="fetch">
-                <button class="button is-default" @click.prevent="fetch">Filtruj</button>
+                <button class="button is-default" @click.prevent="fetch">
+                    <lari-icon name="filter"></lari-icon>
+                </button>
             </div>
-            <span class="licon-edit"></span>
         </div>
         <div class="panel-body">
             <div class="table">
